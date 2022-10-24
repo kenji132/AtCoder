@@ -1,18 +1,14 @@
-import itertools 
-
 S = input()
-N = len(S)+1
-a = [0]*N
-for i in range(N-1):
-  if S[i] == '<':
-    a[i+1] = a[i] + 1
-for i in range(N-2, -1, -1):
-  print(a)
-  if S[i] == '>':
-    a[i] = max(a[i], a[i+1] + 1)
 
-print(sum(a))
+N = len(S)
+A = [0] * (N + 1)
+for i in range(N):
+    if S[i] == '<':
+        A[i+1] = A[i] + 1
+for i in range(N-1, -1, -1):
+    if S[i] == '>':
+        A[i] = max(A[i], A[i+1] + 1)
 
+ans = sum(A)
 
-
-
+print(ans)
