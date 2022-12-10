@@ -27,22 +27,26 @@ for p in pri:
     pf[p] += 1
 
 left = 1
+print(pf)
 right = K
 
 while left < right:
   center = (left + right) // 2
   for key, value in pf.items():
-    print(key, value)
+    print(key, value, center)
+    print('----')
     cnt = 0
     tmp = key
     while tmp <= center:
       cnt += center // tmp
       tmp *= key
-      if cnt < value:
+      print(cnt ,tmp)
+    if cnt < value:
         left = center + 1
+        print('left')
         break
-      else:
+    else:
         right = center
-    print(left, right)
+
 
 print(left)
