@@ -33,18 +33,14 @@
 
 N, K, D = map(int, input().split())
 A = list(map(int, input().split()))
- 
+
 dp = [[-1] * D for _ in range(K+1)]
 dp[0][0] = 0
- 
+
 for a in A:
-    print(a)
-    for k in reversed(range(K)):
-        print(k)
-        for d in range(D):
-            print(dp)
-            if dp[k][d] == -1:
+    for k in reversed(range(K)): # kは既に何個選んでいるか
+        for d in range(D): # dは余り
+            if dp[k][d] == -1: # データなし
                 continue
-            print(k+1,d+a)
-            dp[k+1][(d+a)%D] = max(dp[k+1][(d+a)%D], dp[k][d] + a)
+            dp[k+1][(d+a)%D] = max(dp[k+1][(d+a)%D], dp[k][d] + a) #最大値を入れる
 print(dp[K][0])
